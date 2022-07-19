@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  font-family: 'Times New Roman', Times, serif;
+  color: white;
+  padding: 0.5rem 2rem;
+  background-color: black;
+}
+
+.leftBox span {
+  color: rgba(26, 155, 47, 0.801);
+  font-size: 3rem;
+}
+
+.rightBox button {
+  color: white;
+  background-color: rgba(26, 155, 47, 0.801);
+  padding: 0.7rem 3rem;
+  margin: 0 0.5rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+}
+
+.rightBox button:hover {
+  background-color: rgba(34, 202, 62, 0.801);
+}
