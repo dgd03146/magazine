@@ -15,7 +15,7 @@ function App() {
         <Route path="/main" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
-        <Route path="*" element={<NopageFound />} />
+        {/* <Route path="*" element={<NopageFound />} /> */}
       </Routes>
     </div>
   );
