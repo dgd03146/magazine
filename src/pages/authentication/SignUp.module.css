@@ -9,10 +9,10 @@
 
 .signUp {
   color: white;
-  text-align: center;
+  /* text-align: center; */
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 2rem 2rem 0 2rem;
   align-items: center;
   background-color: black;
 
@@ -20,10 +20,20 @@
   border-radius: 1rem;
   min-width: 25rem;
   max-width: 30rem;
+  min-height: 45rem;
+  max-height: 45rem;
+}
+
+.signUp p {
+  color: white;
+  font-size: 0.8rem;
+  margin: 0;
+  text-align: left;
 }
 
 .signUpWrapper {
   margin: 1rem;
+
   width: 100%;
 }
 
@@ -50,7 +60,7 @@
 
 .inputBox input {
   border: none;
-  margin: 0.3rem 0;
+  margin: 1rem 0;
   font-size: 0.9rem;
   padding: 1.2rem 1rem;
   border-radius: 4px;
@@ -84,8 +94,13 @@ hr {
   font-size: 1rem;
 }
 
+.disable {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
 .loginBtn {
-  margin: 0.5rem;
+  margin-top: 2rem;
   background-color: transparent;
   border: none;
   font-size: 0.95rem;

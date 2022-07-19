@@ -19,8 +19,8 @@ const Login = () => {
         </h1>
         <div className={styles.loginWrapper}>
           <div className={styles.inputBox}>
-            <input type="email" placeholder="아이디(이메일)" />
-            <input type="password" placeholder="비밀번호" />
+            <input type="email" placeholder="아이디(이메일)를 입력해주세요." />
+            <input type="password" placeholder="비밀번호를 입력해주세요." />
           </div>
           <button className={styles.loginBtn} onClick={onLogin}>
             로그인
