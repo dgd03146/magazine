@@ -15,6 +15,11 @@
   font-size: 3rem;
 }
 
+.rightBox {
+  display: flex;
+  align-items: center;
+}
+
 .rightBox button {
   color: white;
   background-color: rgba(26, 155, 47, 0.801);

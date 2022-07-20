@@ -1,7 +1,11 @@
 import React, { useRef } from 'react';
 import styles from './Login.module.css';
 import { useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  setPersistence,
+  browserSessionPersistence
+} from 'firebase/auth';
 import { getDocs, where, query, collection } from 'firebase/firestore';
 import { auth, db } from '../../shared/firebase';
 import { useDispatch } from 'react-redux';
@@ -19,6 +23,7 @@ const Login = () => {
     let user_id;
     let doc_id;
 
+    setPersistence(auth, browserSessionPersistence); // session에 로그인 정보
     const user = await signInWithEmailAndPassword(
       auth,
       id_ref.current.value,
@@ -36,7 +41,8 @@ const Login = () => {
       doc_id = u.id;
     });
 
-    dispatch(authActions.setUser({ username, user_id, doc_id })); // user 정보
+    dispatch(authActions.setUser({ username, user_id, doc_id })); // user 정보 redux에 설정
+
     navigate('/main');
   };
 
