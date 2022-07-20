@@ -5,13 +5,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { authActions } from '../redux/auth-slice';
 import { signOut } from 'firebase/auth';
 import { auth } from '../shared/firebase';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const Header = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const username = useSelector((state) => state.auth.user.username);
+  const userId = useSelector((state) => state.auth.user.user_id);
 
   const gotoLogin = () => {
     navigate('/login');
@@ -42,13 +44,22 @@ const Header = () => {
           </>
         )}
         {isLoggedIn && (
-          <>
-            <h1>{username}</h1>
-            <button>알림</button>
-            <button className={styles.logout} onClick={logoutHandler}>
-              로그아웃
+          <div className={styles.isLoggedInBox}>
+            <h1
+              className={styles.userId}
+              onClick={() => {
+                navigate('/myPage');
+              }}
+            >
+              {userId}
+            </h1>
+            <button>
+              <NotificationsIcon />
             </button>
-          </>
+            <button className={styles.logout} onClick={logoutHandler}>
+              <LogoutIcon />
+            </button>
+          </div>
         )}
       </div>
     </header>

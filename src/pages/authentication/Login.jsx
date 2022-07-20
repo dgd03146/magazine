@@ -42,6 +42,7 @@ const Login = () => {
     });
 
     dispatch(authActions.setUser({ username, user_id, doc_id })); // user 정보 redux에 설정
+    dispatch(authActions.login());
 
     navigate('/main');
   };

@@ -1,4 +1,7 @@
 .posts {
   min-width: 70%;
-  background-color: gray;
+  max-width: 70%;
+  margin: 0;
+  /* background-color: black; */
+  list-style: none;
 }

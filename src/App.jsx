@@ -11,13 +11,14 @@ import { authActions } from './redux/auth-slice';
 import { apiKey, auth, db } from './shared/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getDocs, where, query, collection } from 'firebase/firestore';
+import MyPage from './pages/mypage/MyPage';
 
 function App() {
   const dispatch = useDispatch();
 
   const session_key = `firebase:authUser:${apiKey}:[DEFAULT]`;
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-
+  const userId = useSelector((state) => state.auth.user.user_id);
   const username = useSelector((state) => state.auth.user.username);
 
   const isSession = sessionStorage.getItem(session_key) ? true : false;
@@ -42,14 +43,13 @@ function App() {
       });
 
       dispatch(authActions.setUser({ username, user_id, doc_id })); // user 정보 redux에 설정
-      // dispatch(authActions.setUser({}));
     } else {
-      dispatch(authActions.logOut());
+      dispatch(authActions.logOut()); // isloggedin => false
     }
   };
 
   useEffect(() => {
-    if (isSession) {
+    if (isSession && !userId) {
       onAuthStateChanged(auth, loginCheck);
     }
   }, []);
@@ -62,6 +62,7 @@ function App() {
         <Route path="/main" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
+        <Route path="/myPage" element={<MyPage />} />
         <Route path="*" element={<NopageFound />} />
       </Routes>
     </div>

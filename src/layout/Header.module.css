@@ -1,3 +1,5 @@
+@import url('https://webfontworld.github.io/score/SCoreDream.css');
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -7,12 +9,13 @@
   font-family: 'Times New Roman', Times, serif;
   color: white;
   padding: 0 2rem;
+
   background-color: black;
 }
 
 .leftBox span {
   color: rgba(26, 155, 47, 0.801);
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .rightBox {
@@ -31,4 +34,33 @@
 
 .rightBox button:hover {
   background-color: rgba(34, 202, 62, 0.801);
+}
+
+.isLoggedInBox {
+  display: flex;
+  align-items: center;
+  font-size: 0.7rem;
+}
+
+.userId {
+  margin: 0 1rem;
+}
+
+.isLoggedInBox button {
+  padding: 0;
+  margin: 0 1rem;
+  background-color: transparent;
+}
+
+.isLoggedInBox svg {
+  font-size: 2rem;
+  color: white;
+}
+
+.isLoggedInBox button:hover {
+  background-color: transparent;
+}
+
+.isLoggedInBox svg:hover {
+  color: rgba(34, 202, 62, 0.801);
 }
