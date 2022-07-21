@@ -5,8 +5,9 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { db } from '../../shared/firebase';
 import { getMyPosts, postsActions } from '../../redux/posts-slice';
+import { doc, deleteDoc } from 'firebase/firestore';
 
 const MyPage = () => {
   const user_id = useSelector((state) => state.auth.user.user_id);
@@ -23,6 +24,12 @@ const MyPage = () => {
   const gotoEdit = (id) => {
     navigate('/myPage/' + id);
     dispatch(postsActions.isEdit());
+  };
+
+  const onDelete = async (id) => {
+    dispatch(postsActions.delete(id));
+    await deleteDoc(doc(db, 'posts', id));
+    navigate('/main');
   };
 
   return (
@@ -66,7 +73,12 @@ const MyPage = () => {
               >
                 수정하기
               </button>
-              <button className={styles.deleteBtn}>삭제하기</button>
+              <button
+                className={styles.deleteBtn}
+                onClick={() => onDelete(it.doc_id)}
+              >
+                삭제하기
+              </button>
             </div>
           </div>
         ))}

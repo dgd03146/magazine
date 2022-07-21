@@ -14,7 +14,7 @@ export const getAllPosts = createAsyncThunk('posts/getAllPosts', async () => {
 
     loadedPosts.push(doc.data());
   });
-  console.log(loadedPosts);
+
   const sortedPosts = loadedPosts.sort((a, b) => b.id - a.id);
 
   return sortedPosts;
@@ -33,7 +33,6 @@ export const getMyPosts = createAsyncThunk(
       const addDocId = { ...doc.data(), doc_id };
 
       loadedPosts.push(addDocId);
-      console.log(loadedPosts, 'loadedPosts');
     });
 
     return loadedPosts;
@@ -65,9 +64,7 @@ const postsSlice = createSlice({
       });
     },
     delete(state, action) {
-      state.posts = state.posts.filter(
-        (it) => parseInt(it.id) !== parseInt(action.payload)
-      );
+      state.posts = state.posts.filter((it) => it.id !== action.payload);
     },
     isEdit(state) {
       state.isEdit = true;

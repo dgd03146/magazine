@@ -18,17 +18,15 @@ const MyPagePost = () => {
 
   const [isEmpty, setIsEmpty] = useState(false); // input 비워있으면 회원가입 button 클릭x
 
-  const myPosts = useSelector((state) => state.posts.myPosts);
-
   const [isInputValue, setIsInputValue] = useState({
     title: '',
     content: '',
-    url: ''
+    image: ''
   });
 
   const [layoutChecked, setLayOutChecked] = useState('leftText');
 
-  const { title, content, url } = isInputValue;
+  const { title, content, image } = isInputValue;
 
   const file_link_ref = useRef('');
   const contentRef = useRef('');
@@ -36,33 +34,28 @@ const MyPagePost = () => {
 
   const userId = useSelector((state) => state.auth.user.user_id);
   const username = useSelector((state) => state.auth.user.username);
-
+  const myPosts = useSelector((state) => state.posts.myPosts);
   const isEdit = useSelector((state) => state.posts.isEdit);
-
-  let doc_id = useSelector((state) => state.posts.doc_id);
-  console.log(doc_id);
 
   let params = useParams();
   let id = params['*'];
 
-  // const [imageSrc, setImageSrc] = useState(''); // 이미지 미리보기
-
   useEffect(() => {
     if (id && myPosts.length >= 1 && isEdit) {
       const targetPost = myPosts.find((it) => it.id == id);
-
       setIsInputValue(targetPost);
     }
   }, [id, myPosts]);
 
   useEffect(() => {
     // 게시물 유효성 체크
-    if (title !== '' && content !== '' && url !== '') {
+
+    if (title !== '' && content !== '' && image !== '') {
       setIsEmpty(true);
     } else {
       setIsEmpty(false);
     }
-  }, [title, content, url]);
+  }, [title, content, image, isInputValue]);
 
   const radioCheckHandler = (e) => {
     setLayOutChecked(e.target.value);
@@ -104,21 +97,18 @@ const MyPagePost = () => {
 
     // edit 하는경우
     if (isEdit && isInputValue) {
-      const editPosts = myPosts.map((it) =>
-        parseInt(it.id) === parseInt(isInputValue.id)
-          ? (it = { ...isInputValue })
-          : it
-      );
-      // await updateDoc(doc(db, 'posts',), {
-      //   posts: editPosts
-      // });
-      // dispatch(postsActions.edit(isInputValue));
+      await updateDoc(doc(db, 'posts', isInputValue.doc_id), {
+        ...isInputValue
+      });
+      dispatch(postsActions.edit(isInputValue));
 
-      // navigate(-1);
-      // return;
+      navigate('/main');
+      return;
     }
 
+    // 추가하는 경우
     // db에 데이터 업뎃
+
     const posts_doc = await addDoc(collection(db, 'posts'), {
       user_id: userId,
       name: username,

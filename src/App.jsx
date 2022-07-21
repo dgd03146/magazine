@@ -61,6 +61,7 @@ function App() {
   return (
     <div className={styles.App}>
       <Header />
+
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/main" element={<Main />} />
