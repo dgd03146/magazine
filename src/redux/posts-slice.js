@@ -7,8 +7,17 @@ const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || '';
 
 export const getAllPosts = createAsyncThunk('posts/getAllPosts', async () => {
-  let loadedPostss;
+  let loadedPosts = [];
   const user_docs = await getDocs(query(collection(db, 'posts')));
+  user_docs.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+
+    loadedPosts.push(doc.data());
+  });
+  console.log(loadedPosts);
+  const sortedPosts = loadedPosts.sort((a, b) => b.id - a.id);
+
+  return sortedPosts;
 });
 
 const initialState = {
@@ -83,6 +92,18 @@ const postsSlice = createSlice({
           return it;
         }
       });
+    }
+  },
+  extraReducers: {
+    [getAllPosts.pending]: (state) => {
+      state.status = 'loading';
+    },
+    [getAllPosts.fulfilled]: (state, action) => {
+      state.posts = action.payload;
+      state.status = 'success';
+    },
+    [getAllPosts.rejected]: (state, action) => {
+      state.status = 'failed';
     }
   }
 });

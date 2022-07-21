@@ -74,7 +74,7 @@ const MyPagePost = () => {
     let timeString = hours + ':' + minutes + ':' + seconds;
     const createdTime = dateString + ' ' + timeString;
 
-    // db에 데이터 작성
+    // db에 데이터 업뎃
     const posts_doc = await addDoc(collection(db, 'posts'), {
       user_id: userId,
       name: username,

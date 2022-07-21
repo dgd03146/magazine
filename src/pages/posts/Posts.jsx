@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Posts.module.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Post from './Post';
+import { getAllPosts } from '../../redux/posts-slice';
 
 const Posts = () => {
+  let dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.posts);
+
+  useEffect(() => {
+    dispatch(getAllPosts());
+  }, [dispatch]);
 
   return (
     <ul className={styles.posts}>

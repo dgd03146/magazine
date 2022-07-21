@@ -68,6 +68,7 @@ const SignUp = () => {
         emailErrorMessage: '유효하지 않은 이메일입니다.'
       });
       id_ref.current.focus(); // 자동 포커스
+      return;
     } else if (!validName) {
       setErrorMessage({
         ...errorMessage,
@@ -75,6 +76,7 @@ const SignUp = () => {
         nameErrorMessage: '3자 이상으로 입력해야합니다.'
       });
       name_ref.current.focus();
+      return;
     } else if (!validPassword) {
       setErrorMessage({
         ...errorMessage,
@@ -82,6 +84,7 @@ const SignUp = () => {
         passwordErrorMessage: '6자 이상으로 입력해야 합니다.'
       });
       pw_ref.current.focus();
+      return;
     } else if (!validPasswordCheck) {
       setErrorMessage({
         ...errorMessage,
@@ -89,6 +92,7 @@ const SignUp = () => {
         passwordCheckErrorMessage: '비밀번호를 다시 확인해주세요.'
       });
       pwCheck_ref.current.focus();
+      return;
     }
 
     // user 생성
@@ -97,13 +101,11 @@ const SignUp = () => {
       id_ref.current.value,
       pw_ref.current.value
     );
-    console.log(user, 'user');
 
     // user
     const user_doc = await addDoc(collection(db, 'users'), {
       user_id: user.user.email,
-      name: name_ref.current?.value,
-      posts: {}
+      name: name_ref.current?.value
     }); // 회원가입 끝난 상태에서 firebaseStore에다가 저장
 
     alert('회원가입이 완료되었습니다.');
