@@ -1,9 +1,18 @@
+/* .postsBox {
+  min-width: 60%;
+  max-width: 60%;
+  height: calc(100vh - 90px);
+  background-color: yellow;
+} */
+
 .posts {
   min-width: 60%;
   max-width: 60%;
+
   margin: 0;
   background-color: #121212;
   padding-left: 0;
   padding: 0 3rem;
+
   list-style: none;
 }
