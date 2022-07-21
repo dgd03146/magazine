@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './MyPage.module.css';
 import EditIcon from '@mui/icons-material/Edit';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { getMyPosts, postsActions } from '../../redux/posts-slice';
 
 const MyPage = () => {
-  const userId = useSelector((state) => state.auth.user.user_id);
+  const user_id = useSelector((state) => state.auth.user.user_id);
   const username = useSelector((state) => state.auth.user.username);
+  const myPosts = useSelector((state) => state.posts.myPosts);
 
   let navigate = useNavigate();
+  let dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMyPosts(user_id));
+  }, [user_id, dispatch]);
+
+  const gotoEdit = (id) => {
+    navigate('/myPage/' + id);
+    dispatch(postsActions.isEdit());
+  };
+
   return (
     <div className={styles.myPage}>
       <div className={styles.profileBox}>
@@ -19,58 +35,41 @@ const MyPage = () => {
         />
         <div className={styles.userInfo}>
           <div className={styles.userUpBox}>
-            <p className={styles.userId}>{userId}</p>
+            <p className={styles.userId}>{user_id}</p>
             <button
               onClick={() => {
-                navigate('/myPage/' + userId);
+                navigate('/myPage/' + user_id);
+                dispatch(postsActions.notIsEdit());
               }}
             >
-              <EditIcon />
+              <AddCircleIcon />
             </button>
           </div>
           <div className={styles.userDownBox}>
-            <p>{username}</p>
-            <p>posts 10</p>
+            <p>
+              <span>이름</span> {username}
+            </p>
+            <p>
+              <span className={styles.span}>게시물</span> {myPosts.length}
+            </p>
           </div>
         </div>
       </div>
       <div className={styles.myPosts}>
-        <div className={styles.box}>
-          <img
-            src="https://blog.kakaocdn.net/dn/cthsxd/btroICP7mb7/bxdDLEIUkyIMWojXKc8B9K/img.jpg"
-            alt=""
-          />
-        </div>
-        <div className={styles.box}>
-          <img
-            src="https://img.sbs.co.kr/newimg/news/20210511/201549804_1280.jpg"
-            alt=""
-          />
-        </div>
-        <div className={styles.box}>
-          <img
-            src="http://www.interfootball.co.kr/news/photo/202201/555679_475963_2041.jpg"
-            alt=""
-          />
-        </div>
-        <div className={styles.box}>
-          <img
-            src="http://monthly.chosun.com/upload/1510/1510_392.jpg"
-            alt=""
-          />
-        </div>
-        <div className={styles.box}>
-          <img
-            src="https://image-cdn.hypb.st/https%3A%2F%2Fkr.hypebeast.com%2Ffiles%2F2022%2F06%2FSon-heung-min-soccer-boots-sold-for-16-million-won-ft.jpg?fit=max&cbr=1&q=90&w=750&h=500"
-            alt=""
-          />
-        </div>
-        <div className={styles.box}>
-          <img
-            src="https://file.mk.co.kr/meet/neds/2019/12/image_readtop_2019_1046979_15762861074013635.jpg"
-            alt=""
-          />
-        </div>
+        {myPosts.map((it) => (
+          <div className={styles.box} key={it.id}>
+            <img src={it.image} alt="" />
+            <div className={styles.buttonBox}>
+              <button
+                className={styles.editBtn}
+                onClick={() => gotoEdit(it.id)}
+              >
+                수정하기
+              </button>
+              <button className={styles.deleteBtn}>삭제하기</button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../shared/firebase';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import LogoutIcon from '@mui/icons-material/Logout';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 const Header = () => {
   let navigate = useNavigate();
@@ -47,14 +48,14 @@ const Header = () => {
         )}
         {isLoggedIn && (
           <div className={styles.isLoggedInBox}>
-            <h1
-              className={styles.userId}
-              onClick={() => {
-                navigate('/myPage');
-              }}
-            >
-              {userId}
-            </h1>
+            <h1 className={styles.userId}>{userId}</h1>
+            <button>
+              <AccountBoxIcon
+                onClick={() => {
+                  navigate('/myPage');
+                }}
+              />
+            </button>
             <button>
               <NotificationsIcon />
             </button>

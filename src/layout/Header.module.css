@@ -48,17 +48,15 @@
 
 .isLoggedInBox {
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   font-size: 0.7rem;
 }
 
 .userId {
-  cursor: pointer;
+  font-size: 1.2rem;
+
   margin: 0 1rem;
-  color: gray;
-}
-.userId:hover {
-  color: white;
+  color: rgb(175, 175, 175);
 }
 
 .isLoggedInBox button {
@@ -68,6 +66,7 @@
 }
 
 .isLoggedInBox svg {
+  cursor: pointer;
   font-size: 1.5rem;
   color: white;
 }
