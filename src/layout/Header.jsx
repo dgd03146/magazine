@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Header.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { authActions } from '../redux/auth-slice';
 import { signOut } from 'firebase/auth';
@@ -32,9 +32,11 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.leftBox}>
-        <h1>
-          ⚽Football<span>Magazine</span>
-        </h1>
+        <Link to="./main">
+          <h1>
+            ⚽Football<span>Magazine</span>
+          </h1>
+        </Link>
       </div>
       <div className={styles.rightBox}>
         {!isLoggedIn && (

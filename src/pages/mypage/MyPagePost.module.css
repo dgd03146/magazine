@@ -1,0 +1,152 @@
+.myPagePost {
+  min-width: 60%;
+  max-width: 60%;
+
+  background-color: #121212;
+
+  font-family: 'RidiBatang';
+  color: white;
+  padding: 2rem 0;
+  padding-bottom: 3rem;
+}
+
+.myPagePost img {
+  width: 15rem;
+  height: 15rem;
+}
+
+.myPagePost h1 {
+  margin: 0;
+}
+
+.imageInput {
+}
+
+.textLeftBox {
+  text-align: left;
+}
+
+.textLeftBox h2 {
+  padding: 0 1rem;
+  margin: 2rem 0;
+}
+
+.text {
+  font-size: 5rem;
+}
+
+.layout1 {
+  padding: 1rem;
+  background-color: black;
+  border-top: groove gray 1px;
+  border-bottom: groove gray 1px;
+}
+
+.layout1Box {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.layout2 {
+  padding: 1rem;
+  background-color: black;
+  border-top: groove gray 1px;
+  border-bottom: groove gray 1px;
+}
+
+.layout3Box {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout3 {
+  padding: 1rem;
+  background-color: black;
+  border-top: groove gray 1px;
+  border-bottom: groove gray 1px;
+}
+
+.contentBox {
+  padding: 1rem;
+  text-align: left;
+}
+
+.contentUpBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.contentUpBox button {
+  padding: 0.5em 0.75em;
+  background-color: #337ab7;
+  color: white;
+  font-size: inherit;
+  font-family: 'RidiBatang';
+}
+
+.contentUpBox button:hover {
+  background-color: rgb(16, 83, 138);
+  color: white;
+}
+
+.contentUpBoxRight {
+  display: flex;
+  align-items: center;
+}
+
+.imageInput {
+  font-size: 1.2rem;
+  font-family: 'RidiBatang';
+}
+
+.textarea {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-family: 'RidiBatang';
+}
+
+.filebox label {
+  display: inline-block;
+  padding: 0.5em 0.75em;
+  color: white;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #5cb85c;
+  cursor: pointer;
+}
+
+.filebox label:hover {
+  background-color: #0f7e0f;
+}
+
+.filebox input[type='file'] {
+  /* 파일 필드 숨기기 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.titleInput {
+  padding: 1em 0.75em;
+  outline: none;
+}
+
+.disable {
+  opacity: 0.8;
+  cursor: not-allowed;
+}

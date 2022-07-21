@@ -22,7 +22,7 @@
 
 .topBox {
   color: white;
-  padding: 1rem;
+  /* padding: 1rem; */
   display: flex;
   font-size: 0.9rem;
   justify-content: space-between;

@@ -2,14 +2,13 @@ import React from 'react';
 import styles from './Post.module.css';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-const Post = ({ comment, title, id, content, likes, image }) => {
-  const commentCount = comment.length;
+const Post = ({ title, id, content, likes, image, user_id, created_time }) => {
   return (
     <li className={styles.post}>
       <div className={styles.leftContainer}>
         <div className={styles.topBox}>
-          <p>userId</p>
-          <p>Created Time</p>
+          <p>{user_id}</p>
+          <p>{created_time}</p>
         </div>
         <h1 className={styles.title}>{title}</h1>
         <hr />
@@ -18,7 +17,7 @@ const Post = ({ comment, title, id, content, likes, image }) => {
         <div className={styles.downBox}>
           <div className={styles.downLeftBox}>
             <span>좋아요 {likes}개</span>
-            <span>댓글 {commentCount}개</span>
+            <span>댓글 0개</span>
           </div>
           <button className={styles.likes}>
             <FavoriteBorderIcon />

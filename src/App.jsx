@@ -1,5 +1,5 @@
 import styles from './App.module.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Main from './pages/main/Main';
 import Login from './pages/authentication/Login';
 import SignUp from './pages/authentication/SignUp';
@@ -12,6 +12,7 @@ import { apiKey, auth, db } from './shared/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getDocs, where, query, collection } from 'firebase/firestore';
 import MyPage from './pages/mypage/MyPage';
+import MyPagePost from './pages/mypage/MyPagePost';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,8 @@ function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const userId = useSelector((state) => state.auth.user.user_id);
   const username = useSelector((state) => state.auth.user.username);
+
+  const navigate = useNavigate();
 
   const isSession = sessionStorage.getItem(session_key) ? true : false;
 
@@ -50,6 +53,7 @@ function App() {
 
   useEffect(() => {
     if (isSession && !userId) {
+      // 새로고침 방지
       onAuthStateChanged(auth, loginCheck);
     }
   }, []);
@@ -62,7 +66,8 @@ function App() {
         <Route path="/main" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
-        <Route path="/myPage" element={<MyPage />} />
+        {isLoggedIn && <Route path="/myPage" element={<MyPage />} />}
+        {isLoggedIn && <Route path="/myPage/*" element={<MyPagePost />} />}
         <Route path="*" element={<NopageFound />} />
       </Routes>
     </div>

@@ -1,0 +1,94 @@
+@import url('https://webfontworld.github.io/ridi/RidiBatang.css');
+
+.myPage {
+  min-width: 60%;
+  max-width: 60%;
+
+  background-color: #121212;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: 'RidiBatang';
+  color: white;
+  padding: 1rem;
+}
+.profileBox {
+  display: flex;
+  margin: 1rem 0;
+}
+
+.profileImage {
+  width: 10rem;
+  height: 10rem;
+  margin-right: 2rem;
+  border-radius: 50%;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.userUpBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+
+.userUpBox button {
+  line-height: 1rem;
+}
+
+.userUpBox svg {
+  font-size: 2rem;
+  color: white;
+}
+
+.userUpBox svg:hover {
+  transform: scale(1.2);
+  transition: 300ms ease-in-out;
+  color: gray;
+}
+
+.userId {
+  color: gray;
+  font-weight: 700;
+  margin: 0;
+  margin-right: 1rem;
+}
+
+.userDownBox {
+  display: flex;
+}
+
+.userDownBox p {
+  font-size: 1.3rem;
+  margin-right: 1rem;
+}
+
+.myPosts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  border-top: 1px groove gray;
+  margin-top: 2rem;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+  margin-top: 0;
+  width: 18rem;
+  height: 18rem;
+}
+
+.myPosts img {
+  width: 100%;
+  height: 100%;
+}

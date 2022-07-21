@@ -102,7 +102,7 @@ const SignUp = () => {
     // user
     const user_doc = await addDoc(collection(db, 'users'), {
       user_id: user.user.email,
-      name: name_ref.current.value,
+      name: name_ref.current?.value,
       posts: {}
     }); // 회원가입 끝난 상태에서 firebaseStore에다가 저장
 

@@ -11,6 +11,16 @@
   padding: 0 2rem;
 
   background-color: black;
+  /* border-bottom: groove 1px gray; */
+}
+
+.leftBox a {
+  color: white;
+  text-decoration: none;
+}
+
+.leftBox h1 {
+  cursor: pointer;
 }
 
 .leftBox span {
@@ -38,12 +48,17 @@
 
 .isLoggedInBox {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   font-size: 0.7rem;
 }
 
 .userId {
+  cursor: pointer;
   margin: 0 1rem;
+  color: gray;
+}
+.userId:hover {
+  color: white;
 }
 
 .isLoggedInBox button {
@@ -53,7 +68,7 @@
 }
 
 .isLoggedInBox svg {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: white;
 }
 
@@ -62,5 +77,5 @@
 }
 
 .isLoggedInBox svg:hover {
-  color: rgba(34, 202, 62, 0.801);
+  color: gray;
 }

@@ -1,7 +1,9 @@
 .posts {
-  min-width: 70%;
-  max-width: 70%;
+  min-width: 60%;
+  max-width: 60%;
   margin: 0;
-  /* background-color: black; */
+  background-color: #121212;
+  padding-left: 0;
+  padding: 0 3rem;
   list-style: none;
 }

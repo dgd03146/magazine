@@ -5,21 +5,21 @@ import Post from './Post';
 
 const Posts = () => {
   const posts = useSelector((state) => state.posts.posts);
-  console.log(posts);
 
   return (
     <ul className={styles.posts}>
-      {Object.keys(posts).map((key) => {
-        const post = posts[key];
+      {posts.map((it) => {
         return (
           <Post
-            key={key}
-            id={post.id}
-            content={post.content}
-            title={post.title}
-            likes={post.likes}
-            image={post.image}
-            comment={post.comment}
+            key={it.id}
+            id={it.id}
+            content={it.content}
+            title={it.title}
+            likes={it.likes}
+            image={it.image}
+            comment={it.comment}
+            user_id={it.user_id}
+            created_time={it.created_time}
           />
         );
       })}
